@@ -3,36 +3,35 @@ import logging
 import sys
 from os import getenv
 
-from aiogram import Bot, Dispatcher, html
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
+from aiogram.types.bot_command import BotCommand
 from dotenv import load_dotenv
+from app.handlers import router
+from app.commands import FILMS_COMMAND
 
 load_dotenv()
 
-TOKEN = getenv("BOT_TOKEN")
+TOKEN = getenv("TOKEN_BOT")
+
 
 dp = Dispatcher()
+dp.include_router(router)
 
 
-@dp.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
-    print(message)
-    await message.answer(f"Hello, {message.from_user.full_name}!")
-
-
-@dp.message()
-async def echo_handler(message: Message):
-    await message.reply(message.text.upper())
-
-    
-    
 async def main() -> None:
-    bot = Bot(token=TOKEN, 
-              default=DefaultBotProperties(parse_mode=ParseMode.HTML)
-              )
+    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+
+    await bot.set_my_commands(
+        [
+            BotCommand(command="start", description="Зaпуск ботa"),
+            BotCommand(
+                command=FILMS_COMMAND, description="Перегляд списку фільмів"
+            ),
+        ]
+    )
+
     await dp.start_polling(bot)
 
 
