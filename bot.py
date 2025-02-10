@@ -17,7 +17,7 @@ TOKEN = getenv("BOT_TOKEN")
 dp = Dispatcher()
 
 
-@dp.message(Command("start"))
+@dp.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
     print(message)
     await message.answer(f"Hello, {message.from_user.full_name}!")
