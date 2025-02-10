@@ -39,7 +39,7 @@ project "фільми goiteens": https://t.me/films_goiteens_bot
 В цьому повідомленні є все необхідне:
 ‘You will find it at t.me/acuta_python_awesome_first_bot’ - це лінк який використовується вашим ботом
 ‘Use this token to access the HTTP API:
-6743572452:AAFRAMqF3hr7H2NionAn7vGNShOelB0MYnc’ - Це токен для доступу до TelegramBot API
+6743572452:xxxxxx’ - Це токен для доступу до TelegramBot API
 
 __Важливо! Нікому не передавайте та не демонструйте цей токен.__
 
