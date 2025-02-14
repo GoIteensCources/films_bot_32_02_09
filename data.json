@@ -6,13 +6,18 @@
         "photo": "https://upload.wikimedia.org/wikipedia/ru/5/50/Kungfupanda_poster.jpg",
         "rating": "72%"
     },
-
-    {    
+    {
         "title": "Fallout",
         "desc": "Fallout is the story of haves and have-nots in a world in which there\u2019s almost nothing left to have. Two-hundred years after the apocalypse, the gentle denizens of luxury fallout shelters are forced to return to the irradiated hellscape their ancestors left behind\u2014and are shocked to discover an",
         "url": "https://www.rottentomatoes.com/tv/fallout/s01",
         "photo": "https://upload.wikimedia.org/wikipedia/ru/f/f0/Fallout_Amazon_poster.jpeg",
         "rating": "94%"
+    },
+    {
+        "title": "Sonic 3",
+        "desc": "Sonic the Hedgehog 3 continues the high-speed adventures of Sonic as he teams up with his friends to battle new threats. The movie picks up after the events of Sonic the Hedgehog 2, with Sonic and Tails facing off against Dr. Robotnik, who joins forces with a new powerful adversary, Shadow the Hedgehog. As the stakes rise, Sonic must embrace his powers and unite with his allies to save the world. Packed with action, humor, and heart, Sonic 3 promises to deliver an exciting ride for fans of all ages",
+        "rating": "82",
+        "url": "https://uaserial.com/movie-sonic-the-hedgehog-3",
+        "photo": "AgACAgIAAxkBAANqZ698xVYvJkg5JpCqhCX0vJq0DlUAAub2MRtc1IFJlJkdvWSmqcQBAAMCAAN4AAM2BA"
     }
-
 ]

@@ -9,7 +9,7 @@ from aiogram.enums import ParseMode
 from aiogram.types.bot_command import BotCommand
 from dotenv import load_dotenv
 from app.handlers import router
-from app.commands import FILMS_COMMAND
+from app.commands import FILMS_COMMAND, ADD_FILM_COMMAND, DELETE_FILM_COMMAND
 
 load_dotenv()
 
@@ -26,9 +26,9 @@ async def main() -> None:
     await bot.set_my_commands(
         [
             BotCommand(command="start", description="Зaпуск ботa"),
-            BotCommand(
-                command=FILMS_COMMAND, description="Перегляд списку фільмів"
-            ),
+            BotCommand(command=FILMS_COMMAND, description="Перегляд списку фільмів"),
+            BotCommand(command=ADD_FILM_COMMAND, description="Додати фільм"),
+            BotCommand(command=DELETE_FILM_COMMAND, description="Видалити фільм"),
         ]
     )
 

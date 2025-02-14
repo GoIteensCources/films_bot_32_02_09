@@ -3,7 +3,8 @@ from aiogram.filters.callback_data import CallbackData
 
 
 BUTTON_LIST_FILMS = "Перелік фільмів"
-
+BUTTON_ADD_FILM = "Додати фільм"
+BUTTON_DELETE_FILM = "Видалити фільм"
 
 class FilmsCallback(CallbackData, prefix="films", sep=";"):
     id: int
@@ -12,7 +13,10 @@ class FilmsCallback(CallbackData, prefix="films", sep=";"):
 
 def menu_keyboard():
     builder = ReplyKeyboardBuilder()
+    
     builder.button(text=BUTTON_LIST_FILMS)
+    builder.button(text=BUTTON_ADD_FILM)
+    builder.button(text=BUTTON_DELETE_FILM)
 
     markup = builder.as_markup()
     markup.resize_keyboard = True
