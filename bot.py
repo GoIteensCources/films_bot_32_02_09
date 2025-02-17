@@ -10,6 +10,7 @@ from aiogram.types.bot_command import BotCommand
 from dotenv import load_dotenv
 from app.handlers import router
 from app.commands import FILMS_COMMAND, ADD_FILM_COMMAND, DELETE_FILM_COMMAND
+from app.calbeck_learn_handler import router_calb
 
 load_dotenv()
 
@@ -18,7 +19,7 @@ TOKEN = getenv("TOKEN_BOT")
 
 dp = Dispatcher()
 dp.include_router(router)
-
+dp.include_router(router_calb)
 
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))

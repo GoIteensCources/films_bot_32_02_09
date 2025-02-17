@@ -16,7 +16,7 @@ from aiogram.types import ReplyKeyboardRemove
 router = Router()
 DATABASE = "data.json"
 
-
+# command  /start
 @router.message(CommandStart()) # or /start
 async def command_start_handler(message: Message) -> None:
     await message.answer(
@@ -25,6 +25,7 @@ async def command_start_handler(message: Message) -> None:
     )
 
 
+# list of films
 @router.message(Command(FILMS_COMMAND))
 @router.message(F.text == BUTTON_LIST_FILMS)
 async def films(message: Message) -> None:
@@ -34,6 +35,18 @@ async def films(message: Message) -> None:
     await message.answer(f"Оберіть фільм:", reply_markup=markup_films)
 
 
+
+@router.callback_query(F.data.startswith("page_"))
+async def pages_films(callback: CallbackQuery) -> None:
+    page =  int(callback.data.split("_")[1])    
+    data = get_data(DATABASE)
+    markup_films = film_keyboard(data, page)
+    await callback.message.edit_reply_markup(reply_markup=markup_films)
+    await callback.answer()
+
+
+
+# info about filb 
 @router.callback_query(FilmsCallback.filter())
 async def callb_film(callback: CallbackQuery, callback_data: FilmsCallback) -> None:
     data_film: dict = get_data(DATABASE, film_id=callback_data.id)
@@ -56,6 +69,9 @@ async def callb_film(callback: CallbackQuery, callback_data: FilmsCallback) -> N
     
     await callback.answer()
 
+    
+    
+    
     
 @router.message(Command(ADD_FILM_COMMAND))
 @router.message(F.text == BUTTON_ADD_FILM)
