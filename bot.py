@@ -21,6 +21,7 @@ dp = Dispatcher()
 dp.include_router(router)
 dp.include_router(router_calb)
 
+
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
@@ -37,5 +38,10 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+    logging.basicConfig(
+        level=logging.INFO,
+        # stream=sys.stdout,
+        filemode="w",
+        filename="botlog.log",
+    )
     asyncio.run(main())

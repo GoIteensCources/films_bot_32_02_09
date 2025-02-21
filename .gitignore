@@ -2,3 +2,5 @@
 .venv_bot
 .idea
 __pycache__
+*.log
+.venv
