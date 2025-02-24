@@ -1,11 +1,10 @@
-from aiogram.utils.keyboard import (
-    ReplyKeyboardBuilder,
-    InlineKeyboardBuilder,
-    InlineKeyboardMarkup,
-)
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types import InlineKeyboardButton
-
+from aiogram.utils.keyboard import (
+    InlineKeyboardBuilder,
+    InlineKeyboardMarkup,
+    ReplyKeyboardBuilder,
+)
 
 BUTTON_LIST_FILMS = "Перелік фільмів"
 BUTTON_ADD_FILM = "Додати фільм"

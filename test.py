@@ -1,5 +1,6 @@
-from app.database import get_data
 from pprint import pprint
+
+from app.database import get_data
 
 DATABASE = "data.json"
 

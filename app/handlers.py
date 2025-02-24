@@ -1,23 +1,21 @@
-from aiogram import Router
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
-from .commands import FILMS_COMMAND, ADD_FILM_COMMAND
-from .database import get_data, add_film_to_db
-from .keyboards import (
-    menu_keyboard,
-    film_keyboard,
-    FilmsCallback,
-    BUTTON_LIST_FILMS,
-    BUTTON_ADD_FILM,
-)
-from aiogram import F
+from aiogram import F, Router
+from aiogram.filters import Command, CommandStart
 from aiogram.filters.callback_data import CallbackQuery
-from aiogram.types import URLInputFile
-from .schemas import Film
-from .fsm import FilmForm
 from aiogram.fsm.context import FSMContext
-from aiogram.types import ReplyKeyboardRemove
+from aiogram.types import Message, ReplyKeyboardRemove, URLInputFile
+
+from .commands import ADD_FILM_COMMAND, FILMS_COMMAND
+from .database import add_film_to_db, get_data
+from .fsm import FilmForm
+from .keyboards import (
+    BUTTON_ADD_FILM,
+    BUTTON_LIST_FILMS,
+    FilmsCallback,
+    film_keyboard,
+    menu_keyboard,
+)
 from .logging_tool import async_log_handlers, logging
+from .schemas import Film
 
 router = Router()
 DATABASE = "data.json"
@@ -29,6 +27,12 @@ logger = logging.getLogger(__name__)
 @router.message(CommandStart())  # or /start
 @async_log_handlers
 async def command_start_handler(message: Message, *args, **kwargs) -> None:
+    """Обробка команди /start
+
+    Args:
+        message (Message): _description_
+    """
+    # send message hello
     await message.answer(
         f"Hello, {message.from_user.full_name}!", reply_markup=menu_keyboard()
     )
@@ -84,6 +88,7 @@ async def callb_film(
     await callback.answer()
 
 
+# add film (FSM)
 @router.message(Command(ADD_FILM_COMMAND))
 @router.message(F.text == BUTTON_ADD_FILM)
 @async_log_handlers

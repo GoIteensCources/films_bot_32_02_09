@@ -1,23 +1,10 @@
-from aiogram import Router
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
-from .commands import FILMS_COMMAND, ADD_FILM_COMMAND
-from .database import get_data, add_film_to_db
-from .keyboards import (
-    menu_keyboard,
-    film_keyboard,
-    FilmsCallback,
-    BUTTON_LIST_FILMS,
-    BUTTON_ADD_FILM,
-)
-from aiogram import F
-from aiogram.filters.callback_data import CallbackQuery
-from aiogram.types import URLInputFile
-
-from aiogram.types import ReplyKeyboardRemove, InlineKeyboardButton
-from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
-from aiogram.filters.callback_data import CallbackData
 from random import randint
+
+from aiogram import F, Router
+from aiogram.filters import Command
+from aiogram.filters.callback_data import CallbackQuery
+from aiogram.types import InlineKeyboardButton, Message
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 router_calb = Router()
 DATABASE = "data.json"
