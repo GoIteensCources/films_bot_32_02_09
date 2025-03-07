@@ -27,7 +27,7 @@ def inline_learn_keyboard():
 
 @router_calb.message(Command("inline"))
 async def inline_handler(message: Message) -> None:
-    await message.answer(f"Инлайн кнопки:", reply_markup=inline_learn_keyboard())
+    await message.answer("Инлайн кнопки:", reply_markup=inline_learn_keyboard())
 
 
 @router_calb.callback_query(F.data.startswith("value_"))

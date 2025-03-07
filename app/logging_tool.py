@@ -13,5 +13,5 @@ def async_log_handlers(func):
 
 
 @async_log_handlers
-def some_handl():
+async def some_handl():
     pass

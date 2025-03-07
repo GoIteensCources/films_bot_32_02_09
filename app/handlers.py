@@ -47,7 +47,7 @@ async def films(message: Message, *args, **kwargs) -> None:
     data = get_data(DATABASE)
     markup_films = film_keyboard(data)
 
-    await message.answer(f"Оберіть фільм:", reply_markup=markup_films)
+    await message.answer("Оберіть фільм:", reply_markup=markup_films)
 
 
 @router.callback_query(F.data.startswith("page_"))
@@ -93,7 +93,7 @@ async def callb_film(
 @router.message(F.text == BUTTON_ADD_FILM)
 @async_log_handlers
 async def add_film(message: Message, state: FSMContext, *args, **kwargs) -> None:
-    await message.answer(f"Починаємо додавати фільм")
+    await message.answer("Починаємо додавати фільм")
     await state.set_state(FilmForm.title)
     await message.answer("Ведіть назву фільму", reply_markup=ReplyKeyboardRemove())
 
@@ -143,7 +143,7 @@ async def add_film_photo(message: Message, state: FSMContext) -> None:
 
         await state.clear()
         await message.answer(
-            f"Дякую за введену інформацію! Фільм збережено!",
+            "Дякую за введену інформацію! Фільм збережено!",
             reply_markup=menu_keyboard(),
         )
 
